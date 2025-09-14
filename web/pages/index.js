@@ -1,4 +1,10 @@
 export default function Home() {
+  const photos = [
+    {src:'https://source.unsplash.com/600x400?wedding', desc:'Matrimonio'},
+    {src:'https://source.unsplash.com/600x400?communion', desc:'Comunione'},
+    {src:'https://source.unsplash.com/600x400?event', desc:'Evento'}
+  ];
+
   return (
     <>
       <header style={{background:'#fdf6f0', padding:'3rem 1rem', textAlign:'center'}}>
@@ -9,8 +15,14 @@ export default function Home() {
 
       <section style={{padding:'3rem 1rem', textAlign:'center'}}>
         <h2>Portfolio</h2>
-        <p>Le emozioni catturate diventano ricordi per sempre.<br/>Scorri le gallery qui sotto e richiedi il tuo servizio.</p>
-        {/* placeholder per le foto – le aggiungiamo subito dopo */}
+        <div style={{display:'flex', flexWrap:'wrap', gap:'1rem', justifyContent:'center', marginTop:'1.5rem'}}>
+          {photos.map((p,i)=>(
+            <div key={i} style={{flex:'0 0 280px'}}>
+              <img src={p.src} alt={p.desc} style={{width:'100%', borderRadius:'8px'}}/>
+              <p style={{margin:'.5rem 0', color:'#555'}}>{p.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
     </>
   )
